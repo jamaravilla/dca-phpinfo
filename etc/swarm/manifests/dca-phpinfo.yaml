@@ -5,7 +5,7 @@ services:
       placement:
         constraints:
         - node.role == worker
-      replicas: 1
+      replicas: 2
     expose:
     - "8080"
     image: academiaonline/dca-phpinfo:latest
