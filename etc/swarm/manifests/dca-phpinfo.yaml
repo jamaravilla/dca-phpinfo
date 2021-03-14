@@ -1,5 +1,5 @@
 services:
-  phpinfo:
+  dca-phpinfo:
     deploy:
       mode: replicated
       placement:
