@@ -10,7 +10,6 @@ spec:
       app: dca-phpinfo
   template:
     metadata:
-      name: dca-phpinfo
       labels:
         app: dca-phpinfo
     spec:
