@@ -89,6 +89,5 @@ jobs:
           while true
             do
               sleep 10
-              kubectl logs svc/dca-phpinfo
               kubectl logs svc/dca-phpinfo 2>& 1 | grep 'PHP .* Development Server .* started' && break
             done
