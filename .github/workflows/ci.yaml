@@ -15,15 +15,17 @@ jobs:
         name: test
         run: |
           set -x
-          docker build -t academiaonline/phpinfo:test .
-          docker run -d --name phpinfo -p 80:8080 academiaonline/phpinfo:test
+          docker build -t                             academiaonline/dca-phpinfo:test .
+          docker run -d --name dca-phpinfo -p 80:8080 academiaonline/dca-phpinfo:test
           while true
-            do  sleep 10
-            docker logs phpinfo 2>& 1 | grep 'PHP .* Development Server .* started' && break
+            do
+              sleep 10
+              docker logs dca-phpinfo 2>& 1 | grep 'PHP .* Development Server .* started' && break
             done
           while true
-            do  sleep 10
-                curl -s localhost | grep "PHP.*phpinfo()" && break
+            do
+              sleep 10
+              curl -s localhost | grep "PHP.*phpinfo()" && break
             done
   swarm:
     runs-on: ubuntu-18.04
@@ -37,9 +39,11 @@ jobs:
           set -x
           docker build -t academiaonline/dca-phpinfo:test .
           docker swarm init
-          sed -i s/worker/manager/ etc/swarm/manifests/dca-phpinfo.yaml
-          docker stack deploy -c etc/swarm/manifests/dca-phpinfo.yaml dca-phpinfo
+          sed -i s/worker/manager/  etc/swarm/manifests/dca-phpinfo.yaml
+          sed -i s/latest/test/     etc/swarm/manifests/dca-phpinfo.yaml
+          docker stack deploy -c    etc/swarm/manifests/dca-phpinfo.yaml dca-phpinfo
           while true
-            do  sleep 10
-                docker service logs dca-phpinfo_dca-phpinfo 2>& 1 | grep 'PHP .* Development Server .* started' && break
+            do
+              sleep 10
+              docker service logs dca-phpinfo_dca-phpinfo 2>& 1 | grep 'PHP .* Development Server .* started' && break
             done
