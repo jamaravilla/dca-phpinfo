@@ -1,6 +1,6 @@
 # dca-phpinfo
 
-![CI](https://github.com/academiaonline/dca-phpinfo/workflows/CI/badge.svg?branch=docker)
+![CI](https://github.com/academiaonline/dca-phpinfo/workflows/CI/badge.svg?branch=v1.0)
 
 1. Check the source code
 2. Create the Dockerfile
