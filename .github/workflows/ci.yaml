@@ -84,7 +84,7 @@ jobs:
           docker build -t academiaonline/dca-phpinfo:test .
           
           sed -i s/latest/test/ etc/kubernetes/manifests/dca-phpinfo.yaml
-          kubectl apply -f      etc/kubernetes/manifests/dca-phpinfo.yaml
+          kubectl apply -R -f   etc/kubernetes/manifests/
           
           while true
             do
